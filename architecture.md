@@ -127,8 +127,10 @@ alongside its original metadata, ready to insert into the vector store.
 ### 3.5 Generation (`generation/answer.py`)
 
 - Build a prompt containing: the user's question, the retrieved text chunks (with
-  source labels), and the retrieved images (passed as image content, since Claude
-  accepts image input directly).
+  source labels), and the retrieved images (passed as native image content, since
+  Gemini accepts PIL image input directly).
+- Requires a `GEMINI_API_KEY` environment variable (free tier). Default model:
+  `gemini-2.5-flash`, which supports vision input.
 - Explicit instruction in the system prompt: **answer only using the provided
   context; if the context doesn't address the question, say so directly rather than
   answering from general knowledge.**
@@ -214,8 +216,8 @@ multimodal-rag/
 
 ## 7. Open questions
 
-- [ ] Which LLM for generation — Claude API, or something else? (assumed Claude API
-      here, given multimodal input support)
+- [x] Which LLM for generation — using the Gemini API (`gemini-2.5-flash` via
+      `google-genai`), free tier, native multimodal input support
 - [ ] Should image citations show a thumbnail inline in the Streamlit UI, or just
       the filename?
 - [ ] Deployment target — Streamlit Community Cloud (free, simplest) vs. self-hosted?

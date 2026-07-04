@@ -1,3 +1,9 @@
 pypdf
 Pillow
 pytest
+sentence-transformers
+transformers
+torch
+chromadb
+google-genai
+streamlit
