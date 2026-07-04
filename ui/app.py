@@ -3,8 +3,14 @@
 See architecture.md Section 3.6.
 """
 
+import sys
 import tempfile
 from pathlib import Path
+
+# Streamlit Cloud doesn't add the project root to sys.path automatically, so
+# project-local imports (embedding, ingestion, ...) fail unless it's added
+# explicitly here, before those imports.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import streamlit as st
 
